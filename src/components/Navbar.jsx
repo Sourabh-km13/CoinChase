@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { currencyContext } from '../context/currency'
 import { useNavigate } from 'react-router-dom'
 
+
 export default function Navbar() {
   const{setcurrency}=useContext(currencyContext)
   const navigate=useNavigate()
@@ -11,6 +12,7 @@ export default function Navbar() {
 
   return (<div className="navbar bg-base-100">
     <div className="navbar-start">
+        <p className='px-2'>currency</p>
       <div className="dropdown">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
           <svg
@@ -26,9 +28,11 @@ export default function Navbar() {
               d="M4 6h16M4 12h16M4 18h7" />
           </svg>
         </div>
+        
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          
           <li><a onClick={()=>setcurrency('inr')}>INR</a></li>
           <li><a onClick={()=>setcurrency('usd')}>USD</a></li>
           

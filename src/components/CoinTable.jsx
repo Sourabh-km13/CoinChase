@@ -22,6 +22,8 @@ export default function CoinTable() {
 
 
     if (isError) {
+        console.log('error occured');
+        
         return <div>error:{error.message}</div>
     }
     return (

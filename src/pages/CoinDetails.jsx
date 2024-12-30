@@ -1,16 +1,23 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState} from 'react'
 import parse from "html-react-parser"
 import { useParams } from 'react-router-dom'
 import { fetchCoindatabyid } from '../services/Fetchcoinbyid'
 import { useQuery } from 'react-query'
 import { currencyContext } from '../context/currency'
 import Spinner from '../components/Spinner'
+import CoinInfoContainer from '../components/CoininfoChart/CoinChartcontainer'
 
 
 export default function CoinDetails() {
+    const [readmore, setreadmore] = useState(false)
     const {coinid}=useParams()
     const {currency}=useContext(currencyContext)
-    const {data,isLoading,error,isError}=useQuery(['coinid',coinid],
+    function handlereadmore() {
+        console.log('clicked');
+        
+        setreadmore(prev=>!prev)
+    }
+    const {data,isLoading,error,isError}=useQuery(['coinhistory',coinid],
         ()=>fetchCoindatabyid(coinid),
     {
         cacheTime:1000*12*60,
@@ -45,11 +52,6 @@ export default function CoinDetails() {
                 {data?.name}
             </h1>
 
-            <p
-                className="w-full px-6 py-4 text-justify"
-            >
-                {parse(data?.description?.en)}
-            </p>
 
             <div
                 className="w-full flex flex-col md:flex-row md:justify-around"
@@ -75,6 +77,27 @@ export default function CoinDetails() {
                 </div>
 
             </div>
+                <p
+                    className={`w-full px-6 py-4 text-justify overflow-hidden transition-all duration-1000 ease-linear ${readmore ? 'max-h-[1000px]' : 'max-h-28'
+                        }`}
+                >
+                    {readmore
+                        ? parse(data?.description?.en)
+                        : parse((data?.description?.en || '').slice(0, 150))}
+                    <button
+                        onClick={handlereadmore}
+                        className="text-blue-400 ml-2"
+                    >
+                        {readmore ? 'Read Less' : '...Read More'}
+                    </button>
+                </p>
+        </div>
+        <div className="md:w-2/3 w-full p-6">
+                Coin Information
+            <div className="md: w-full ">
+                <CoinInfoContainer coinId={coinid} />
+            </div>
+
         </div>
     </div>
     )
