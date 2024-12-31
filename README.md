@@ -53,6 +53,7 @@ This application integrates with the [CoinGecko API](https://www.coingecko.com/e
 ## Future Enhancements
 
 - Add a search bar to filter cryptocurrencies by name.
-- Implement dark mode for better user experience.
 ---
+![Screenshot 2024-12-31 143057](https://github.com/user-attachments/assets/3e21d41d-a080-4e9b-a55b-9c5bd3ae3013)
 
+![Screenshot 2024-12-31 143118](https://github.com/user-attachments/assets/5828e10e-3900-4df6-8d27-6f2d28b39ea9)
