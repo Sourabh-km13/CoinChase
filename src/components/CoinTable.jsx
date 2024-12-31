@@ -30,7 +30,7 @@ export default function CoinTable() {
         <>
 
             <div className="my-5 flex flex-col gap-4 mx-auto items-center justify-center w-[80vw]">
-                <div className="bg-cyan-600 rounded-md flex w-full font-semibold text-xl py-4 px-2 items-center justify-center">
+                <div className="bg-violet-600 rounded-md flex w-full font-semibold text-xl py-4 px-2 items-center justify-center">
                     <div className="basis-[33%]">Coin</div>
                     <div className="basis-[25%]">Price ({currency})</div>
                     <div className="basis-[20%]">24h change</div>
@@ -45,7 +45,7 @@ export default function CoinTable() {
                                     
                                     key={coin.id}
                                     
-                                    className="shadow-md shadow-cyan-950">
+                                    className="shadow-md shadow-violet-950">
                                     <div
                                         className="w-full px-2 py-4 flex justify-between items-center font-bold"
                                         
