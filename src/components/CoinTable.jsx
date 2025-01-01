@@ -29,15 +29,15 @@ export default function CoinTable() {
     return (
         <>
 
-            <div className="my-5 flex flex-col gap-4 mx-auto items-center justify-center w-[80vw]">
+            <div className="my-5 flex flex-col md:gap-4 mx-auto items-center justify-center w-[80vw] ">
                 <div className="bg-violet-600 rounded-md flex w-full font-semibold text-xl py-4 px-2 items-center justify-center">
                     <div className="basis-[33%]">Coin</div>
                     <div className="basis-[25%]">Price ({currency})</div>
                     <div className="basis-[20%]">24h change</div>
-                    <div className="basis-[20%]">Market cap</div>
+                    <div className="hidden md:basis-[20%] md:block">Market cap</div>
                 </div>
 
-                <div className=" mx-auto w-full rounded-md">
+                <div className=" mx-auto w-full rounded-md ">
                     {
                         isLoading ? <progress className="progress w-56"></progress> : data && data.map((coin) => {
                             return (
@@ -53,18 +53,18 @@ export default function CoinTable() {
                                         <div 
                                         onClick={()=>handleClick(coin.id)}
                                         className="flex gap-3 basis-[33%] items-center justify-start cursor-pointer transition-transform duration-300 hover:scale-105">
-                                            <div className="w-24 h-24">
+                                            <div className="w-12 h-12 md:w-24 md:h-24">
                                                 <img src={coin.image} alt="" loading="lazy"/>
                                             </div>
-                                            <div className="flex flex-col gap-1">
+                                            <div className="hidden md:flex flex-col gap-1">
                                                 <div className="text-3xl">{coin.name}</div>
                                                 <div className="text-xl">{coin.symbol}</div>
                                             </div>
                                         </div>
 
                                         <div className="basis-[25%]">{coin.high_24h}</div>
-                                        <div className="basis-[20%]">{coin.price_change_24h}</div>
-                                        <div className="basis-[20%]">{coin.market_cap}</div>
+                                        <div className=" max-w-[20%] px-2 overflow-hidden  basis-[20%]">{coin.price_change_24h}</div>
+                                        <div className="hidden md:basis-[20%] md:block">{coin.market_cap}</div>
                                     </div>
 
                                 </div>
